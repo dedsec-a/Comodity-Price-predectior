@@ -1,4 +1,4 @@
-import logging 
+import logging
 import os
 from datetime import datetime
 
@@ -16,3 +16,7 @@ logging.basicConfig(
     format="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
     level= logging.INFO
 )
+
+
+if __name__ == "__main__":
+    logging.info("The Logging has Started ")
