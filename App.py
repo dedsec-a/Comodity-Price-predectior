@@ -1,13 +1,31 @@
 import streamlit as st
 import pandas as pd
+import pickle
+import numpy as np
+from sklearn.preprocessing import OneHotEncoder
+# Load the model
+model = pickle.load(open("model.pkl", "rb"))
+ohe = OneHotEncoder(handle_unknown= 'ignore')
 
 def preprocess_data(data):
-    # Placeholder function for preprocessing
-    return data  # Replace with actual preprocessing steps
+    # Perform preprocessing
+    df = pd.DataFrame(data)
+    ohe.fit(df[["device_brand", "os"]])
+    df["os_type"] =  pd.get_dummies(df["os"])
+    df["4g"] = df["4g"].map({'yes': 1, 'no': 0}).astype(int)
+    df["5g"] = df["5g"].map({'yes': 1, 'no': 0}).astype(int)
+    df_encoded = np.array(df)
 
-def predict_price(processed_data):
-    # Placeholder function for ML model prediction
-    return 999.99  # Replace with actual model prediction logic
+    return df_encoded
+ # Replace with actual preprocessing steps
+
+def predict_price(data):
+
+    # Predict the price
+    prediction = model.predict(data)
+
+    
+    return prediction  # Replace with actual model prediction logic
 
 def main():
     st.title("Mobile Specification Form")
@@ -30,8 +48,7 @@ def main():
         weight = st.number_input("Weight (grams)", min_value=50, max_value=500, step=1)
         release_year = st.number_input("Release Year", min_value=2000, max_value=2025, step=1)
         days_used = st.number_input("Days Used", min_value=0, step=1)
-        normalized_used_price = st.number_input("Normalized Used Price", min_value=0.0, step=0.1)
-        normalized_new_price = st.number_input("Normalized New Price", min_value=0.0, step=0.1)
+     
         
         submit = st.form_submit_button("Submit")
     
@@ -50,18 +67,24 @@ def main():
             "weight": [weight],
             "release_year": [release_year],
             "days_used": [days_used],
-            "normalized_used_price": [normalized_used_price],
-            "normalized_new_price": [normalized_new_price]
+            
         })
         
-        processed_data = preprocess_data(data)
-        predicted_price = predict_price(processed_data)
+      
         
         st.write("### Generated DataFrame:")
         st.dataframe(data)
-        
+
+        # Preprocess the data
+        data = preprocess_data(data)
+        st.write("### Preprocessed Data:")
+        st.write(data)
+        # Predict the price
+        prediction = predict_price(data)
         st.write("### Predicted Price:")
-        st.write(f"$ {predicted_price:.2f}")
+        st.write(prediction)
+
+       
 
 if __name__ == "__main__":
     main()
