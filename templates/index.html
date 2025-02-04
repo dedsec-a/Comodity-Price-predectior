@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Used Phone Price Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9fafb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 22px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #111827;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background-color: #1f2937;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><strong>Used Phone Price Predictor</strong></h1>
+        <p>Enter your phone details to get an estimated price</p>
+        <form action="/predict" method="post">
+            <select name="device_brand">
+                <option>Others</option>
+                <option>Samsung</option>
+                <option>Huawei</option>
+                <option>LG</option>
+                <option>Lenovo</option>
+                <option>ZTE</option>
+                <option>Xiaomi</option>
+                <option>Oppo</option>
+                <option>Asus</option>
+                <option>Alcatel</option>
+                <option>Micromax</option>
+                <option>Vivo</option>
+                <option>Honor</option>
+                <option>HTC</option>
+                <option>Nokia</option>
+                <option>Motorola</option>
+                <option>Sony</option>
+                <option>Meizu</option>
+                <option>Gionee</option>
+                <option>Acer</option>
+                <option>XOLO</option>
+                <option>Panasonic</option>
+                <option>Realme</option>
+                <option>Apple</option>
+                <option>Lava</option>
+                <option>Celkon</option>
+                <option>Spice</option>
+                <option>Karbonn</option>
+                <option>Coolpad</option>
+                <option>BlackBerry</option>
+                <option>Microsoft</option>
+                <option>OnePlus</option>
+                <option>Google</option>
+                <option>Infinix</option>
+            </select>
+            <select name="os">
+                <option>Android</option>
+                <option>iOS</option>
+                <option>Windows</option>
+                <option>Other</option>
+            </select>
+            <input type="number" name="screen_size" placeholder="Screen Size (in inches)" min="4.0" max="7.5" step="0.1">
+            <select name="is_4g">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <select name="is_5g">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <input type="number" name="rear_camera_mp" placeholder="Rear Camera (MP)" min="1" max="200" step="0.1">
+            <input type="number" name="front_camera_mp" placeholder="Front Camera (MP)" min="1" max="100" step="0.1">
+            <input type="number" name="internal_memory" placeholder="Internal Memory (GB)" min="4" max="1024" step="1">
+            <input type="number" name="ram" placeholder="RAM (GB)" min="1" max="32" step="1">
+            <input type="number" name="battery" placeholder="Battery Capacity (mAh)" min="1000" max="10000" step="100">
+            <input type="number" name="weight" placeholder="Weight (grams)" min="50" max="500" step="1">
+            <input type="number" name="release_year" placeholder="Release Year" min="2000" max="2025" step="1">
+            <input type="number" name="days_used" placeholder="Days Used" min="0" step="1">
+            <button type="submit">Predict Price</button>
+        </form>
+    </div>
+</body>
+</html>
