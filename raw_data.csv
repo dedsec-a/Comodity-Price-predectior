@@ -1,0 +1,8 @@
+device_brand,os,screen_size,4g,5g,rear_camera_mp,front_camera_mp,internal_memory,ram,battery,weight,release_year,days_used
+Samsung,Android,5.0,1,1,12.0,8.0,256,4,1200,120,2020,120
+Samsung,Android,5.0,1,1,10.0,4.0,256,4,1200,120,2020,120
+Samsung,Android,5.0,1,1,10.0,4.0,256,4,1200,120,2020,120
+Others,Android,0.0,1,1,0.0,0.0,0,0,0,0,0,0
+Others,Android,0.0,1,1,0.0,0.0,0,0,0,0,0,0
+Others,Android,7.0,1,1,12.0,8.0,64,4,1000,100,2020,100
+Others,Android,0.0,1,1,0.0,0.0,0,0,0,0,0,0
